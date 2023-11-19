@@ -55,7 +55,7 @@ process align_and_qsFilter {
     script:
     """
     samtools bam2fq -@ ${params.ubam_bam2fq_threads} -T 1 ${reads} \
-        | minimap2 -y -t ${params.ubam_map_threads} -ax map-ont ${mmi_reference} - \
+        | minimap2 -y -Y -t ${params.ubam_map_threads} -ax map-ont ${mmi_reference} - \
         | samtools sort -@ ${params.ubam_sort_threads} \
         | samtools view -e '[qs] >= ${params.qscore_filter}' --output ${reads.baseName}.pass.cram --unoutput ${reads.baseName}.fail.cram -O CRAM --reference ${reference} -
     """
