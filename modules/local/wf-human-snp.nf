@@ -159,7 +159,7 @@ process select_het_snps {
 process phase_contig_haplotag {
     // Tags reads in an input BAM from heterozygous SNPs
     // Also haplotag for those modes that need it (--str)
-    label: "haplotag"
+    label "haplotag"
     cpus 4
     input:
         tuple val(contig), 
